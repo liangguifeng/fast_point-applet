@@ -1,0 +1,10 @@
+/**index.wxss**/
+.mall-to-point {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.mall-to-redirect {
+  font-size: 30px;
+}

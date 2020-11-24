@@ -1,0 +1,6 @@
+<!--index.wxml-->
+<view class="container">
+  <view class="mall-to-point">
+    <navigator class="mall-to-redirect" url="plugin://myPlugin/index?openid=o8HpL0w-K3HSgU_K0NDZ2yPu_yVM&mch_id=1586022051">快速积分</navigator>
+  </view>
+</view>
