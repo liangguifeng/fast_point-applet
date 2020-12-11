@@ -33,12 +33,15 @@ App({
       }
     })
   },
-  //在页面加载进来的时候，直接声明全局变量
-  onLoad: function (options) {
-    if (options.openid && options.mch_id) {
-      this.globalData.openid = options.openid;
-      this.globalData.mch_id = options.mch_id;
+  onLaunch(options) {
+    //在页面加载进来的时候，直接声明全局变量，把小程序链接中的参数拿出来声明
+    var openid = options.query.openid;
+    var mch_id = options.query.mch_id;
+    if (openid && mch_id) {
+      this.globalData.openid = options.query.openid;
+      this.globalData.mch_id = options.query.mch_id;
     }
+
   },
   //必须在onShow这调起定位插件
   onShow: function () {
@@ -46,11 +49,11 @@ App({
 
     //这里必须要引入定位模块，且要带着openid
     myPluginInterface.getLocation(this.globalData.openid).then(res => {
-      console.log(res)
+      // 如果传入openid正确，则return_code == 0,否则无法使用支付即积分小程序
       if (res.return_code !== 0) {
         wx.showModal({
           title: '提示',
-          content: 'openid错误',
+          content: 'openid参数错误！',
           success(res) {
             if (res.confirm) {
               console.log('用户点击确定')

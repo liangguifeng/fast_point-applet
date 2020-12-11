@@ -14,7 +14,8 @@ Page({
   },
   onLoad: function (options) {
     if (app.globalData.openid && app.globalData.mch_id) {
-      fastPointUrl: 'plugin://myPlugin/index?openid=' + app.globalData.openid + '&mch_id=' + app.globalData.mch_id;
+      // 小程序链接中带入的openid和mch_id，拼接后才可以打开快速积分小程序插件
+      this.setData({ fastPointUrl: 'plugin://myPlugin/index?openid=' + app.globalData.openid + '&mch_id=' + app.globalData.mch_id });
     }
 
     if (app.globalData.userInfo) {
