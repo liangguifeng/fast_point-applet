@@ -12,6 +12,14 @@ Page({
       url: '../logs/logs'
     })
   },
+
+  //获取手机号
+  getPhoneNumber (e) {
+    console.log(e.detail.errMsg)
+    console.log(e.detail.iv)
+    console.log(e.detail.encryptedData)
+  },
+
   onLoad: function (options) {
     if (app.globalData.openid && app.globalData.mch_id) {
       // 小程序链接中带入的openid和mch_id，拼接后才可以打开快速积分小程序插件

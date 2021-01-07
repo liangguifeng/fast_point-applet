@@ -2,5 +2,7 @@
 <view class="container">
   <view class="mall-to-point">
     <navigator class="mall-to-redirect" url="{{fastPointUrl}}">快速积分</navigator>
+
+    <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">获取手机号</button>
   </view>
 </view>

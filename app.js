@@ -45,23 +45,40 @@ App({
   },
   //必须在onShow这调起定位插件
   onShow: function () {
+    wx.login({
+      success (res) {
+        if (res.code) {
+          console.log(res);
+          //发起网络请求
+          // wx.request({
+          //   url: 'https://test.com/onLogin',
+          //   data: {
+          //     code: res.code
+          //   }
+          // })
+        } else {
+          console.log('登录失败！' + res.errMsg)
+        }
+      }
+    })
+
     var myPluginInterface = requirePlugin('myPlugin');
 
     //这里必须要引入定位模块，且要带着openid
     myPluginInterface.getLocation(this.globalData.openid).then(res => {
       // 如果传入openid正确，则return_code == 0,否则无法使用支付即积分小程序
       if (res.return_code !== 0) {
-        wx.showModal({
-          title: '提示',
-          content: 'openid参数错误！',
-          success(res) {
-            if (res.confirm) {
-              console.log('用户点击确定')
-            } else if (res.cancel) {
-              console.log('用户点击取消')
-            }
-          }
-        })
+        // wx.showModal({
+        //   title: '提示',
+        //   content: 'openid参数错误！',
+        //   success(res) {
+        //     if (res.confirm) {
+        //       console.log('用户点击确定')
+        //     } else if (res.cancel) {
+        //       console.log('用户点击取消')
+        //     }
+        //   }
+        // })
       }
     })
   },
